@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hazem.firebase.Features.AddPost.Model.Post;
 import com.example.hazem.firebase.Features.AddPost.Presenter.AddPostPresenter;
 import com.example.hazem.firebase.Features.AddPost.Presenter.AddPostPresenterImp;
 import com.example.hazem.firebase.Features.AddPost.View.AddPostView;
@@ -26,7 +27,10 @@ public class AddPost extends AppCompatActivity implements AddPostView{
         getWritePostFab ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
-                presenter.confirmWritePost ();
+                String title=getPostTitleEditText ().getText ().toString ();
+                String content=getPostContentEditText ().getText ().toString ();
+
+                presenter.confirmWritePost (new Post ("",content,title));
 
             }
         });

@@ -5,7 +5,5 @@ package com.example.hazem.firebase.Features.main.Presenter;
  */
 
 public interface MainPresenter {
-    public void setUserName();
-    public void setEmail();
-    public void setPosts();
+
 }

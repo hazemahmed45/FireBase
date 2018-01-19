@@ -64,7 +64,6 @@ public class LoginPresenterImp implements LoginPresenter {
 
     @Override
     public boolean checkUser () {
-        //String name=loginView.getEmailEditText ().getText ().toString ();
         String email=loginView.getEmailEditText ().getText ().toString ();
         String password=loginView.getPasswordEditText ().getText ().toString ();
         if (FireBaseApplication.getUser ().getEmail ().equals (email))
@@ -78,26 +77,8 @@ public class LoginPresenterImp implements LoginPresenter {
         return false;
     }
 
-    @Override
-    public void confirmedUser () {
-        navigateToHome ();
-    }
 
-    @Override
-    public void refuseUser () {
-        Toast.makeText (context, "Sign Up first", Toast.LENGTH_SHORT).show ();
-        navigateToSignUp ();
-    }
 
-    @Override
-    public void navigateToHome () {
-        getContext ().startActivity (new Intent (getContext (), MainActivity.class));
-    }
-
-    @Override
-    public void navigateToSignUp () {
-        getContext ().startActivity (new Intent (getContext (),SignUpActivity.class));
-    }
 
 
 }

@@ -3,6 +3,7 @@ package com.example.hazem.firebase.Features.SignUp;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.example.hazem.firebase.Features.SignUp.Presenter.SignUpPresenter;
 import com.example.hazem.firebase.Features.SignUp.Presenter.SignUpPresenterImp;
 import com.example.hazem.firebase.Features.SignUp.View.SignUpView;
 import com.example.hazem.firebase.R;
+import com.example.hazem.firebase.Utills.NavigationUtils;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView{
 
@@ -37,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView{
             @Override
             public void onClick (View view) {
                 presenter.createUser ();
+                NavigationUtils.NavigateToHome (SignUpActivity.this);
             }
         });
     }

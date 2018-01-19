@@ -51,37 +51,20 @@ public class AddPostPresenterImp implements AddPostPresenter {
     }
 
     @Override
-    public void confirmWritePost () {
-        String title=addPostView.getPostTitleEditText ().getText ().toString ();
-        String content=addPostView.getPostContentEditText ().getText ().toString ();
-        final Post post=new Post ("",content,title);
+    public boolean confirmWritePost (Post post) {
+
+        //final Post post=new Post ("",content,title);
         if (!post.getContent ().equals (null))
         {
             if (!post.getTilte ().equals (null))
             {
                 ///// TODO: 12/15/2017
                 FireBaseApplication.getPosts ().add (post);
-                navigateToHome (getContext ());
+                return true;
             }
-            else
-            {
-                destroy ();
-            }
+
         }
-        else
-        {
-            destroy ();
-        }
+        return false;
     }
 
-    @Override
-    public void navigateToHome (Context context) {
-        context.startActivity (new Intent (context,MainActivity.class));
-    }
-
-    @Override
-    public void destroy () {
-        post=null;
-        navigateToHome (getContext ());
-    }
 }

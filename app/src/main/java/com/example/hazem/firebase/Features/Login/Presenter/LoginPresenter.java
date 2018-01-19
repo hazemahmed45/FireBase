@@ -6,8 +6,8 @@ package com.example.hazem.firebase.Features.Login.Presenter;
 
 public interface LoginPresenter {
     public boolean checkUser();
-    public void confirmedUser();
-    public void refuseUser();
-    public void navigateToHome();
-    public void navigateToSignUp();
+    //public void confirmedUser();
+    //public void refuseUser();
+    //public void navigateToHome();
+    //public void navigateToSignUp();
 }

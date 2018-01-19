@@ -9,7 +9,6 @@ import com.example.hazem.firebase.Features.AddPost.Model.Post;
  */
 
 public interface AddPostPresenter {
-    public abstract void confirmWritePost();
-    public abstract void navigateToHome(Context context);
-    public abstract void destroy();
+    public abstract boolean confirmWritePost(Post post);
+
 }

@@ -19,7 +19,6 @@ public class MainPresenterImp implements MainPresenter {
     private MainView mainView;
     private Context context;
     private User user;
-    private PostAdapter adapter;
 
     public MainPresenterImp (Activity activity) {
         if (activity.getClass ()== MainActivity.class)
@@ -57,21 +56,7 @@ public class MainPresenterImp implements MainPresenter {
         this.user = user;
     }
 
-    @Override
-    public void setUserName () {
-        getMainView ().getEmailTextView ().setText (getUser ().getName ());
-    }
 
-    @Override
-    public void setEmail () {
-        getMainView ().getUserNameTextView ().setText (getUser ().getEmail ());
-    }
 
-    @Override
-    public void setPosts () {
-        Toast.makeText (context, FireBaseApplication.getPosts ().size ()+"", Toast.LENGTH_SHORT).show ();
-        adapter=new PostAdapter (FireBaseApplication.getPosts ());
-        getMainView ().getPostsRecyclerView ().setAdapter (adapter);
-        getMainView ().getPostsRecyclerView ().setLayoutManager (new LinearLayoutManager (getContext (),LinearLayoutManager.VERTICAL,false));
-    }
+
 }

@@ -13,4 +13,7 @@ public interface MainView {
     public TextView getUserNameTextView();
     public TextView getEmailTextView();
     public FloatingActionButton getWritePost();
+    public void setUserName();
+    public void setEmail();
+    public void setPosts();
 }

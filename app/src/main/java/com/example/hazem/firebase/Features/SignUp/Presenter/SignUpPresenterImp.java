@@ -43,11 +43,8 @@ public class SignUpPresenterImp implements SignUpPresenter {
         String name=signUpView.getNameEditText ().getText ().toString ();
         String password=signUpView.getPasswordEditText ().getText ().toString ();
         FireBaseApplication.setUser (new User (name,email,password));
-        navigateToHome ();
+        //navigateToHome ();
     }
 
-    @Override
-    public void navigateToHome () {
-        getContext ().startActivity (new Intent (getContext (), MainActivity.class));
-    }
+
 }

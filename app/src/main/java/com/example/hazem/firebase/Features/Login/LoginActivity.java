@@ -14,6 +14,7 @@ import com.example.hazem.firebase.Features.Login.Presenter.LoginPresenter;
 import com.example.hazem.firebase.Features.Login.Presenter.LoginPresenterImp;
 import com.example.hazem.firebase.Features.Login.View.LoginView;
 import com.example.hazem.firebase.R;
+import com.example.hazem.firebase.Utills.NavigationUtils;
 
 public class LoginActivity extends AppCompatActivity implements LoginView,View.OnClickListener{
 
@@ -39,18 +40,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView,View.O
             public void onClick (View view) {
                 if (presenter.checkUser ())
                 {
-                    presenter.navigateToHome ();
+                    NavigationUtils.NavigateToHome (LoginActivity.this);
                 }
                 else
                 {
-                    presenter.refuseUser ();
+                    Toast.makeText (LoginActivity.this, "sign up first", Toast.LENGTH_SHORT).show ();
+                    NavigationUtils.NavigateToSignUp (LoginActivity.this);
                 }
             }
         });
         getSignUpButton ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
-                presenter.navigateToSignUp ();
+                NavigationUtils.NavigateToSignUp (LoginActivity.this);
 
             }
         });
