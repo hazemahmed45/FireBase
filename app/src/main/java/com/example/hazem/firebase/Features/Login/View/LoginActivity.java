@@ -1,18 +1,15 @@
-package com.example.hazem.firebase.Features.Login;
+package com.example.hazem.firebase.Features.Login.View;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.hazem.firebase.Features.Login.Presenter.LoginPresenter;
 import com.example.hazem.firebase.Features.Login.Presenter.LoginPresenterImp;
-import com.example.hazem.firebase.Features.Login.View.LoginView;
 import com.example.hazem.firebase.R;
 import com.example.hazem.firebase.Utills.NavigationUtils;
 
@@ -38,15 +35,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView,View.O
         getSignInButton ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
-                if (presenter.checkUser ())
+                if (presenter.checkUser (getEmailEditText ().getText ().toString (),getPasswordEditText ().getText ().toString ()))
                 {
+
                     NavigationUtils.NavigateToHome (LoginActivity.this);
                 }
-                else
-                {
-                    Toast.makeText (LoginActivity.this, "sign up first", Toast.LENGTH_SHORT).show ();
-                    NavigationUtils.NavigateToSignUp (LoginActivity.this);
-                }
+
             }
         });
         getSignUpButton ().setOnClickListener (new View.OnClickListener () {
@@ -58,26 +52,28 @@ public class LoginActivity extends AppCompatActivity implements LoginView,View.O
         });
     }
 
-    @Override
+
     public EditText getEmailEditText () {
         return findViewById (R.id.et_email_login);
     }
 
-    @Override
     public EditText getPasswordEditText () {
         return findViewById (R.id.et_password_login);
     }
 
-    @Override
     public Button getSignInButton () {
         return findViewById (R.id.btn_sign_in);
     }
 
-    @Override
+
     public Button getSignUpButton () {
         return findViewById (R.id.btn_sign_up);
     }
 
+    public ProgressBar getProgressBar()
+    {
+        return findViewById (R.id.pb_login);
+    }
     @Override
     public void onClick (View view) {
 //        Toast.makeText (this, "here", Toast.LENGTH_SHORT).show ();
@@ -89,5 +85,26 @@ public class LoginActivity extends AppCompatActivity implements LoginView,View.O
 //        else
 //        {
 //        }
+    }
+
+    @Override
+    public void ShowProgressBar () {
+        getProgressBar ().setVisibility (View.VISIBLE);
+    }
+
+    @Override
+    public void closeProgressBar () {
+        getProgressBar ().setVisibility (View.GONE);
+    }
+
+    @Override
+    public void confirmToast () {
+        Toast.makeText (this, "Email successfully Logged in", Toast.LENGTH_SHORT).show ();
+    }
+
+    @Override
+    public void denyToast () {
+        Toast.makeText (this, "Login was not succussful,please signup", Toast.LENGTH_SHORT).show ();
+
     }
 }

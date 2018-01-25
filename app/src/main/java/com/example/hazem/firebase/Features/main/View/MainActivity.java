@@ -1,20 +1,18 @@
-package com.example.hazem.firebase.Features.main;
+package com.example.hazem.firebase.Features.main.View;
 
-import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hazem.firebase.Base.FireBaseApplication;
-import com.example.hazem.firebase.Features.AddPost.AddPost;
 import com.example.hazem.firebase.Features.main.Presenter.MainPresenter;
 import com.example.hazem.firebase.Features.main.Presenter.MainPresenterImp;
-import com.example.hazem.firebase.Features.main.View.MainView;
 import com.example.hazem.firebase.Features.main.adapter.PostAdapter;
 import com.example.hazem.firebase.R;
 import com.example.hazem.firebase.Utills.NavigationUtils;
@@ -31,9 +29,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
 
         presenter=new MainPresenterImp (this);
-        setEmail ();
-        setUserName ();
-        setPosts ();
         getWritePost ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
@@ -43,23 +38,31 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
+    protected void onResume () {
+        super.onResume ();
+        presenter.setData ();
+
+    }
+
     public RecyclerView getPostsRecyclerView () {
         return findViewById (R.id.rv_posts_list);
     }
 
-    @Override
     public TextView getUserNameTextView () {
         return findViewById (R.id.tv_username);
     }
 
-    @Override
     public TextView getEmailTextView () {
         return findViewById (R.id.tv_email);
     }
 
-    @Override
     public FloatingActionButton getWritePost () {
         return findViewById (R.id.fab_write_post_main);
+    }
+
+    public ProgressBar getProgressBar()
+    {
+        return findViewById (R.id.pb_main);
     }
     @Override
     public void setUserName () {
@@ -76,5 +79,16 @@ public class MainActivity extends AppCompatActivity implements MainView{
         adapter=new PostAdapter (FireBaseApplication.getPosts ());
         getPostsRecyclerView ().setAdapter (adapter);
         getPostsRecyclerView ().setLayoutManager (new LinearLayoutManager (this,LinearLayoutManager.VERTICAL,false));
+    }
+
+    @Override
+    public void showProgressBar () {
+        getProgressBar ().setVisibility (View.VISIBLE);
+    }
+
+    @Override
+    public void closeProgressBar () {
+        getProgressBar ().setVisibility (View.GONE);
+
     }
 }

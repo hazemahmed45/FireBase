@@ -5,6 +5,6 @@ package com.example.hazem.firebase.Features.SignUp.Presenter;
  */
 
 public interface SignUpPresenter {
-    public abstract void createUser();
+    public abstract void createUser(String email,String name,String password);
     //public abstract void navigateToHome();
 }

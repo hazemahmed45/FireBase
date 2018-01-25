@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Features.main.MainActivity">
+        <activity android:name=".Features.main.View.MainActivity">
 
         </activity>
         <activity
-            android:name=".Features.AddPost.AddPost"
+            android:name=".Features.AddPost.View.AddPostActivity"
             android:label="@string/title_activity_add_post"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Features.Login.LoginActivity"
+            android:name=".Features.Login.View.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Features.SignUp.SignUpActivity"
+            android:name=".Features.SignUp.View.SignUpActivity"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

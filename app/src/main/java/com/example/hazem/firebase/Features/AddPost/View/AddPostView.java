@@ -9,7 +9,9 @@ import android.widget.EditText;
 
 public interface AddPostView {
     //public abstract void setViews();
-    public abstract EditText getPostTitleEditText();
-    public abstract EditText getPostContentEditText();
-    public abstract FloatingActionButton getWritePostFab();
+    //public abstract EditText getPostTitleEditText();
+    //public abstract EditText getPostContentEditText();
+    //public abstract FloatingActionButton getWritePostFab();
+    void showConfirmToast();
+    void showCancelToast();
 }

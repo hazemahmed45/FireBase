@@ -2,14 +2,12 @@ package com.example.hazem.firebase.Features.main.Presenter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.widget.Toast;
+import android.os.Handler;
 
 import com.example.hazem.firebase.Base.FireBaseApplication;
 import com.example.hazem.firebase.Features.Login.Model.User;
-import com.example.hazem.firebase.Features.main.MainActivity;
+import com.example.hazem.firebase.Features.main.View.MainActivity;
 import com.example.hazem.firebase.Features.main.View.MainView;
-import com.example.hazem.firebase.Features.main.adapter.PostAdapter;
 
 /**
  * Created by Hazem on 12/16/2017.
@@ -17,14 +15,12 @@ import com.example.hazem.firebase.Features.main.adapter.PostAdapter;
 
 public class MainPresenterImp implements MainPresenter {
     private MainView mainView;
-    private Context context;
     private User user;
 
     public MainPresenterImp (Activity activity) {
         if (activity.getClass ()== MainActivity.class)
         {
             mainView=(MainActivity)activity;
-            context=activity;
         }
         user=FireBaseApplication.getUser ();
     }
@@ -33,7 +29,6 @@ public class MainPresenterImp implements MainPresenter {
         if (activity.getClass ()== MainActivity.class)
         {
             mainView=(MainActivity)activity;
-            context=activity;
         }
         this.user=user;
     }
@@ -43,9 +38,6 @@ public class MainPresenterImp implements MainPresenter {
     }
 
 
-    public Context getContext () {
-        return context;
-    }
 
 
     public User getUser () {
@@ -57,6 +49,18 @@ public class MainPresenterImp implements MainPresenter {
     }
 
 
-
-
+    @Override
+    public void setData () {
+        Handler handler=new Handler ();
+        mainView.showProgressBar ();
+        handler.postDelayed (new Runnable () {
+            @Override
+            public void run () {
+                mainView.closeProgressBar ();
+            }
+        },2000);
+        mainView.setEmail ();
+        mainView.setUserName ();
+        mainView.setPosts ();
+    }
 }

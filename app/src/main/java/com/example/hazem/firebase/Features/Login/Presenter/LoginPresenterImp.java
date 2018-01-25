@@ -1,17 +1,12 @@
 package com.example.hazem.firebase.Features.Login.Presenter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Toast;
+import android.os.Handler;
 
 import com.example.hazem.firebase.Base.FireBaseApplication;
-import com.example.hazem.firebase.Features.Login.LoginActivity;
+import com.example.hazem.firebase.Features.Login.View.LoginActivity;
 import com.example.hazem.firebase.Features.Login.Model.User;
 import com.example.hazem.firebase.Features.Login.View.LoginView;
-import com.example.hazem.firebase.Features.SignUp.SignUpActivity;
-import com.example.hazem.firebase.Features.main.MainActivity;
-import com.example.hazem.firebase.R;
 
 /**
  * Created by Hazem on 12/15/2017.
@@ -19,22 +14,16 @@ import com.example.hazem.firebase.R;
 
 public class LoginPresenterImp implements LoginPresenter {
     private LoginView loginView;
-    private Context context;
     private User user;
 
-    public LoginPresenterImp (LoginActivity activity) {
-        loginView=activity;
-        context=activity;
+
+    public LoginPresenterImp (LoginView loginView) {
+        this.loginView = loginView;
+
     }
 
-    public LoginPresenterImp (LoginView loginView, Context context) {
+    public LoginPresenterImp (LoginView loginView, User user) {
         this.loginView = loginView;
-        this.context = context;
-    }
-
-    public LoginPresenterImp (LoginView loginView, Context context, User user) {
-        this.loginView = loginView;
-        this.context = context;
         this.user = user;
     }
 
@@ -46,13 +35,7 @@ public class LoginPresenterImp implements LoginPresenter {
         this.loginView = loginView;
     }
 
-    public Context getContext () {
-        return context;
-    }
 
-    public void setContext (Context context) {
-        this.context = context;
-    }
 
     public User getUser () {
         return user;
@@ -63,17 +46,26 @@ public class LoginPresenterImp implements LoginPresenter {
     }
 
     @Override
-    public boolean checkUser () {
-        String email=loginView.getEmailEditText ().getText ().toString ();
-        String password=loginView.getPasswordEditText ().getText ().toString ();
+    public boolean checkUser (String email,String password) {
+        getLoginView ().ShowProgressBar ();
+        Handler handler=new Handler ();
+        handler.postDelayed (new Runnable () {
+            @Override
+            public void run () {
+                getLoginView ().closeProgressBar ();
+            }
+        },2000);
         if (FireBaseApplication.getUser ().getEmail ().equals (email))
         {
             if (FireBaseApplication.getUser ().getPassword ().equals (password))
             {
+                getLoginView ().confirmToast ();
                 return true;
             }
+            getLoginView ().denyToast ();
             return false;
         }
+        getLoginView ().denyToast ();
         return false;
     }
 

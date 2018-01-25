@@ -8,8 +8,12 @@ import android.widget.EditText;
  */
 
 public interface LoginView {
-    public abstract EditText getEmailEditText();
-    public abstract EditText getPasswordEditText();
-    public abstract Button getSignInButton();
-    public abstract Button getSignUpButton();
+    //public abstract EditText getEmailEditText();
+    //public abstract EditText getPasswordEditText();
+    //public abstract Button getSignInButton();
+    //public abstract Button getSignUpButton();
+    void ShowProgressBar();
+    void closeProgressBar();
+    void confirmToast();
+    void denyToast();
 }

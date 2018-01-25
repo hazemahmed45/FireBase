@@ -5,5 +5,5 @@ package com.example.hazem.firebase.Features.main.Presenter;
  */
 
 public interface MainPresenter {
-
+    void setData();
 }

@@ -9,11 +9,13 @@ import android.widget.TextView;
  */
 
 public interface MainView {
-    public RecyclerView getPostsRecyclerView();
-    public TextView getUserNameTextView();
-    public TextView getEmailTextView();
-    public FloatingActionButton getWritePost();
-    public void setUserName();
-    public void setEmail();
-    public void setPosts();
+    //public RecyclerView getPostsRecyclerView();
+    //public TextView getUserNameTextView();
+    //public TextView getEmailTextView();
+    //public FloatingActionButton getWritePost();
+    void setUserName();
+    void setEmail();
+    void setPosts();
+    void showProgressBar();
+    void closeProgressBar();
 }

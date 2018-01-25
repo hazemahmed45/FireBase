@@ -1,18 +1,15 @@
-package com.example.hazem.firebase.Features.SignUp;
+package com.example.hazem.firebase.Features.SignUp.View;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.hazem.firebase.Features.SignUp.Presenter.SignUpPresenter;
 import com.example.hazem.firebase.Features.SignUp.Presenter.SignUpPresenterImp;
-import com.example.hazem.firebase.Features.SignUp.View.SignUpView;
 import com.example.hazem.firebase.R;
 import com.example.hazem.firebase.Utills.NavigationUtils;
 
@@ -38,29 +35,45 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView{
         getSignUpButton ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
-                presenter.createUser ();
+                presenter.createUser (getEmailEditText ().getText ().toString (),getNameEditText ().getText ().toString (),getPasswordEditText ().getText ().toString ());
                 NavigationUtils.NavigateToHome (SignUpActivity.this);
             }
         });
     }
 
-    @Override
     public EditText getEmailEditText () {
         return findViewById (R.id.et_email_signup);
     }
 
-    @Override
     public EditText getNameEditText () {
         return findViewById (R.id.et_name_signup);
     }
 
-    @Override
     public EditText getPasswordEditText () {
         return findViewById (R.id.et_password_signup);
     }
 
-    @Override
     public Button getSignUpButton () {
         return findViewById (R.id.btn_signup_signup);
+    }
+
+    public ProgressBar getProgressBar()
+    {
+        return findViewById (R.id.pb_signup);
+    }
+
+    @Override
+    public void showToast (String msg) {
+        Toast.makeText (this, msg, Toast.LENGTH_SHORT).show ();
+    }
+
+    @Override
+    public void showProgressBar () {
+        getProgressBar ().setVisibility (View.VISIBLE);
+    }
+
+    @Override
+    public void closeProgressBar () {
+        getProgressBar ().setVisibility (View.GONE);
     }
 }

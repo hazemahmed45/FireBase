@@ -9,6 +9,6 @@ import com.example.hazem.firebase.Features.AddPost.Model.Post;
  */
 
 public interface AddPostPresenter {
-    public abstract boolean confirmWritePost(Post post);
+    boolean confirmWritePost(Post post);
 
 }

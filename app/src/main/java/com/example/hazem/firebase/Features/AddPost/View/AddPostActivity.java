@@ -1,4 +1,4 @@
-package com.example.hazem.firebase.Features.AddPost;
+package com.example.hazem.firebase.Features.AddPost.View;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,7 +14,7 @@ import com.example.hazem.firebase.Features.AddPost.Presenter.AddPostPresenterImp
 import com.example.hazem.firebase.Features.AddPost.View.AddPostView;
 import com.example.hazem.firebase.R;
 
-public class AddPost extends AppCompatActivity implements AddPostView{
+public class AddPostActivity extends AppCompatActivity implements AddPostView{
 
 
     AddPostPresenter presenter;
@@ -31,25 +31,31 @@ public class AddPost extends AppCompatActivity implements AddPostView{
                 String content=getPostContentEditText ().getText ().toString ();
 
                 presenter.confirmWritePost (new Post ("",content,title));
-
+                AddPostActivity.this.finish ();
             }
         });
     }
 
-    @Override
     public EditText getPostTitleEditText () {
         return findViewById (R.id.et_post_title);
     }
 
-    @Override
     public EditText getPostContentEditText () {
         return findViewById (R.id.et_post_content);
     }
 
-    @Override
     public FloatingActionButton getWritePostFab () {
         return findViewById (R.id.fab_write_post);
     }
 
 
+    @Override
+    public void showConfirmToast () {
+        Toast.makeText (this, "Post was added", Toast.LENGTH_SHORT).show ();
+    }
+
+    @Override
+    public void showCancelToast () {
+        Toast.makeText (this, "Post wasn't added", Toast.LENGTH_SHORT).show ();
+    }
 }

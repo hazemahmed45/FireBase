@@ -3,9 +3,9 @@ package com.example.hazem.firebase.Utills;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.example.hazem.firebase.Features.AddPost.AddPost;
-import com.example.hazem.firebase.Features.SignUp.SignUpActivity;
-import com.example.hazem.firebase.Features.main.MainActivity;
+import com.example.hazem.firebase.Features.AddPost.View.AddPostActivity;
+import com.example.hazem.firebase.Features.SignUp.View.SignUpActivity;
+import com.example.hazem.firebase.Features.main.View.MainActivity;
 
 
 /**
@@ -30,7 +30,7 @@ public class NavigationUtils {
     }
     public static void NavigateToAddPost(Activity activity)
     {
-        intent=new Intent (activity, AddPost.class);
+        intent=new Intent (activity, AddPostActivity.class);
         navigate (activity);
     }
 }
