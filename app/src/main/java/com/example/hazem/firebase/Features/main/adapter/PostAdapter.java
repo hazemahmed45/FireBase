@@ -55,6 +55,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder>{
             Content=itemView.findViewById (R.id.tv_post_content);
             Title=itemView.findViewById (R.id.tv_post_title);
         }
+        // TODO  we agreed that the position of this function is outside the class
         private void setData(int position)
         {
             Post post=posts.get (position);

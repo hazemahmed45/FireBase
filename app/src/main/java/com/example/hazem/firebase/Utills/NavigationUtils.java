@@ -11,7 +11,7 @@ import com.example.hazem.firebase.Features.main.View.MainActivity;
 /**
  * Created by Hazem on 9/7/2017.
  */
-
+// TODO great idea :D
 public class NavigationUtils {
     private static Intent intent;
     private static void navigate(Activity activity)

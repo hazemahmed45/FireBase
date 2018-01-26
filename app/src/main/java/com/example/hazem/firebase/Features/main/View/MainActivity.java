@@ -18,7 +18,7 @@ import com.example.hazem.firebase.R;
 import com.example.hazem.firebase.Utills.NavigationUtils;
 
 public class MainActivity extends AppCompatActivity implements MainView{
-
+    // TODO  pravo yabne xD
     MainPresenter presenter;
     private PostAdapter adapter;
 
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         getWritePost ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
+                // TODO you're violate the MVP Architecture iat this line as the View take the decision when the user clicked
                 NavigationUtils.NavigateToAddPost (MainActivity.this);
             }
         });
@@ -75,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
     @Override
     public void setPosts () {
+        // TODO there is more one resposbility for the function ,that's wrong
+        // 1- to show toast
+        // 2- init the adapter
+        // 3- set the adapter
         Toast.makeText (this, FireBaseApplication.getPosts ().size ()+"", Toast.LENGTH_SHORT).show ();
         adapter=new PostAdapter (FireBaseApplication.getPosts ());
         getPostsRecyclerView ().setAdapter (adapter);

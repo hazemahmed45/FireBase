@@ -31,6 +31,7 @@ public class AddPostActivity extends AppCompatActivity implements AddPostView{
                 String content=getPostContentEditText ().getText ().toString ();
 
                 presenter.confirmWritePost (new Post ("",content,title));
+                // TODO Wrong , the view take the decision :)
                 AddPostActivity.this.finish ();
             }
         });

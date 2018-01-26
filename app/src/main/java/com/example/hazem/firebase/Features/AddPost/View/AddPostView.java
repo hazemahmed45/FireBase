@@ -12,6 +12,7 @@ public interface AddPostView {
     //public abstract EditText getPostTitleEditText();
     //public abstract EditText getPostContentEditText();
     //public abstract FloatingActionButton getWritePostFab();
+    //TODO Great !
     void showConfirmToast();
     void showCancelToast();
 }

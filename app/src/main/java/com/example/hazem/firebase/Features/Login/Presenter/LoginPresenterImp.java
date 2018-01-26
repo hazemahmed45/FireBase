@@ -21,7 +21,8 @@ public class LoginPresenterImp implements LoginPresenter {
         this.loginView = loginView;
 
     }
-
+    // TODO you don't need that bro
+    // da la maf4 makn hta5od Object  w tb3tlo eletnen dol
     public LoginPresenterImp (LoginView loginView, User user) {
         this.loginView = loginView;
         this.user = user;
