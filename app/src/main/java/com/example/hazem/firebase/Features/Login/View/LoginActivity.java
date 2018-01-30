@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView,View.O
     public Button getSignUpButton () {
         return findViewById (R.id.btn_sign_up);
     }
-
+    //TODO there are not files not commit with the last update
     public ProgressBar getProgressBar()
     {
         return findViewById (R.id.pb_login);

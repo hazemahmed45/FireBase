@@ -52,7 +52,7 @@ public class AddPostPresenterImp implements AddPostPresenter {
             if (!post.getTilte ().equals (null))
             {
                 ///// TODO: 12/15/2017
-                FireBaseApplication.getPosts ().add (post);
+                FireBaseApplication.getPosts ().add(post);
                 addPostView.showConfirmToast ();
                 return true;
             }

@@ -12,6 +12,7 @@ public interface LoginView {
     //public abstract EditText getPasswordEditText();
     //public abstract Button getSignInButton();
     //public abstract Button getSignUpButton();
+    // TODO that's it , Great Job
     void ShowProgressBar();
     void closeProgressBar();
     void confirmToast();
