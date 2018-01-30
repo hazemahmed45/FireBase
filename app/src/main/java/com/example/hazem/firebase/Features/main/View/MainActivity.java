@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         getWritePost ().setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View view) {
-                NavigationUtils.NavigateToAddPost (MainActivity.this);
+                ((MainPresenterImp)presenter).getMainView ().NavigateToAddPost ();
             }
         });
     }
@@ -75,10 +75,16 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
     @Override
     public void setPosts () {
-        Toast.makeText (this, FireBaseApplication.getPosts ().size ()+"", Toast.LENGTH_SHORT).show ();
+        //Toast.makeText (this, FireBaseApplication.getPosts ().size ()+"", Toast.LENGTH_SHORT).show ();
         adapter=new PostAdapter (FireBaseApplication.getPosts ());
+        ((MainPresenterImp)presenter).getMainView ().setPostsAdapter (adapter);
+    }
+
+    @Override
+    public void setPostsAdapter (PostAdapter adapter) {
         getPostsRecyclerView ().setAdapter (adapter);
         getPostsRecyclerView ().setLayoutManager (new LinearLayoutManager (this,LinearLayoutManager.VERTICAL,false));
+
     }
 
     @Override
@@ -90,5 +96,10 @@ public class MainActivity extends AppCompatActivity implements MainView{
     public void closeProgressBar () {
         getProgressBar ().setVisibility (View.GONE);
 
+    }
+
+    @Override
+    public void NavigateToAddPost () {
+        NavigationUtils.NavigateToAddPost (MainActivity.this);
     }
 }

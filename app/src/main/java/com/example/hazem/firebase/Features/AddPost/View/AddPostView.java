@@ -1,5 +1,6 @@
 package com.example.hazem.firebase.Features.AddPost.View;
 
+import android.app.Activity;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.EditText;
 
@@ -14,4 +15,5 @@ public interface AddPostView {
     //public abstract FloatingActionButton getWritePostFab();
     void showConfirmToast();
     void showCancelToast();
+    void finishActivity(Activity activity);
 }

@@ -1,5 +1,6 @@
 package com.example.hazem.firebase.Features.AddPost.View;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,7 +32,7 @@ public class AddPostActivity extends AppCompatActivity implements AddPostView{
                 String content=getPostContentEditText ().getText ().toString ();
 
                 presenter.confirmWritePost (new Post ("",content,title));
-                AddPostActivity.this.finish ();
+                ((AddPostPresenterImp)presenter).getAddPostView ().finishActivity (AddPostActivity.this);
             }
         });
     }
@@ -57,5 +58,10 @@ public class AddPostActivity extends AppCompatActivity implements AddPostView{
     @Override
     public void showCancelToast () {
         Toast.makeText (this, "Post wasn't added", Toast.LENGTH_SHORT).show ();
+    }
+
+    @Override
+    public void finishActivity (Activity activity) {
+        activity.finish ();
     }
 }

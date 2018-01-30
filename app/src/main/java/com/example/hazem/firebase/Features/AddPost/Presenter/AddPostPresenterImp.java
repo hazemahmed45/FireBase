@@ -35,6 +35,14 @@ public class AddPostPresenterImp implements AddPostPresenter {
         this.post = post;
     }
 
+    public AddPostView getAddPostView () {
+        return addPostView;
+    }
+
+    public void setAddPostView (AddPostView addPostView) {
+        this.addPostView = addPostView;
+    }
+
     @Override
     public boolean confirmWritePost (Post post) {
 

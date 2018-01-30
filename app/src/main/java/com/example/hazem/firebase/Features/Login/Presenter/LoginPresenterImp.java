@@ -22,10 +22,6 @@ public class LoginPresenterImp implements LoginPresenter {
 
     }
 
-    public LoginPresenterImp (LoginView loginView, User user) {
-        this.loginView = loginView;
-        this.user = user;
-    }
 
     public LoginView getLoginView () {
         return loginView;

@@ -36,7 +36,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder>{
     }
     @Override
     public void onBindViewHolder (PostHolder holder, int position) {
-        holder.setData (position);
+        setData (holder ,position);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder>{
 
 
     public class PostHolder extends RecyclerView.ViewHolder {
-        TextView Author,Content,Title;
+        public TextView Author,Content,Title;
 
         public PostHolder (View itemView) {
             super (itemView);
@@ -55,14 +55,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder>{
             Content=itemView.findViewById (R.id.tv_post_content);
             Title=itemView.findViewById (R.id.tv_post_title);
         }
-        private void setData(int position)
-        {
-            Post post=posts.get (position);
-            Author.setText (post.getAuther ());
-            Content.setText (post.getContent ());
-            Title.setText (post.getTilte ());
-        }
 
 
+
+    }
+    private void setData(PostHolder holder,int position)
+    {
+        Post post=posts.get (position);
+        holder.Author.setText (post.getAuther ());
+        holder.Content.setText (post.getContent ());
+        holder.Title.setText (post.getTilte ());
     }
 }
